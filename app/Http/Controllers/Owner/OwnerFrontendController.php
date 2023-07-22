@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
-use App\Models\Credential;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-class LoginController extends Controller
+class OwnerFrontendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +14,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login'); // view login page
+        return view('owner.dashboard');
     }
 
     /**
@@ -85,30 +81,5 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function authenticate(Request $request)
-    {
-        $request->validate([
-        'email'=> 'required',
-        'password'=>'required'
-        ]);
-
-        $userCredential = Credential::where(['email'=>$request->email])->first();
-//        dd($userCredential);
-
-        if ($userCredential && Hash::check($request->password,$userCredential->password)){
-            $userInfo = User::where(['username'=>$userCredential->username])->first();
-            //$name = $userInfo->fname.' '.$userInfo->lname;
-            $request->session()->put('LoggedUser', $userInfo->username);
-            if($userInfo->status == 0){ //User is a tenant
-                return redirect ('dashboard_tenet');
-            }
-            elseif($userInfo->status == 1){ //User is an owner
-                return redirect ('dashboard_owner');
-            }
-        }
-        else{
-            redirect('auth.login')->with('failed','Login in failed!');
-        }
     }
 }

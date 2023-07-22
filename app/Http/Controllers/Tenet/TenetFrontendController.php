@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Owner;
+namespace App\Http\Controllers\Tenet;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class FrontendController extends Controller
+class TenetFrontendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        return view('owner.index');
+        return view('tenet.dashboard');
     }
 
     /**

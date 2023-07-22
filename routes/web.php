@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
-use App\Http\Controllers\Owner\FrontendController;
+use App\Http\Controllers\Owner\OwnerFrontendController;
+use App\Http\Controllers\Tenet\TenetFrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
 
@@ -24,4 +25,13 @@ Route::get('login', [LoginController::class, 'index']) ;
 Route::post('login', [LoginController::class, 'authenticate'])  ;
 Route::get('register', [RegistrationController::class, 'index']) ;
 Route::post('register', [RegistrationController::class, 'store']) ;
-Route::get('/dashboard',[FrontendController::class, 'index']);
+Route::get('/dashboard_owner',[OwnerFrontendController::class, 'index']);
+Route::get('/dashboard_tenet',[TenetFrontendController::class, 'index']);
+
+Route::get('/logout', function(){
+    if(session()->has('LoggedUser')){
+        session()->pull('LoggedUser');
+        return redirect('/login');
+    }
+});
+
