@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <i class="fas fa-house-user"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">@if(session('LoggedUser')) {{session('LoggedUser')}} @endif</div>
+        <div class="sidebar-brand-text mx-3">@if(session('LoggedUser')) {{Session::get('LoggedUser')['housename']}} @endif</div>
     </a>
 
     <!-- Divider -->

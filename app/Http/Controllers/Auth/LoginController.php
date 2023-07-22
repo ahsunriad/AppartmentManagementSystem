@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Credential;
+use App\Models\House;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -98,12 +99,14 @@ class LoginController extends Controller
 
         if ($userCredential && Hash::check($request->password,$userCredential->password)){
             $userInfo = User::where(['username'=>$userCredential->username])->first();
-            //$name = $userInfo->fname.' '.$userInfo->lname;
-            $request->session()->put('LoggedUser', $userInfo->username);
-            if($userInfo->status == 0){ //User is a tenant
+            $houseInfo = House::where(['username'=>$userCredential->username])->first();
+            //dd($houseInfo);
+            $name = $userInfo->fname.' '.$userInfo->lname;
+            $request->session()->put('LoggedUser', ['name' =>$name, 'username'=>$userInfo->username, 'housename'=>$houseInfo->name]);
+            if($userInfo->status == 0){             //User is a tenant
                 return redirect ('dashboard_tenet');
             }
-            elseif($userInfo->status == 1){ //User is an owner
+            elseif($userInfo->status == 1){         //User is an owner
                 return redirect ('dashboard_owner');
             }
         }
