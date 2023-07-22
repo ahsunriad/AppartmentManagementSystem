@@ -97,10 +97,10 @@ class LoginController extends Controller
 
         if ($userCredential && Hash::check($request->password,$userCredential->password)){
             $userInfo = User::where(['username'=>$userCredential->username])->first();
-            if($userInfo->status == 0){
+            if($userInfo->status == 0){ //User is a tenant
                 return 'Tenet';
             }
-            elseif($userInfo->status == 1){
+            elseif($userInfo->status == 1){ //User is an owner
                 return redirect ('dashboard');
             }
         }
