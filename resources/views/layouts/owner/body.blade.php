@@ -23,20 +23,20 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-    @include('layouts.owner.sidebar')
+     @include('layouts.owner.sidebar')           {{--Includes Sidebar --}}
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-            @include('layouts.owner.topbar')
+            @include('layouts.owner.topbar')    {{--Includes Topbar--}}
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                @yield('pageContent')
+                @yield('pageContent')   
             </div>
             <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-        @include('layouts.owner.footer')
+        @include('layouts.owner.footer')         {{--Includes Footer --}}
     </div>
     <!-- End of Content Wrapper -->
 </div>

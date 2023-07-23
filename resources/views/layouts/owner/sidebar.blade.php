@@ -13,7 +13,10 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    @php
+    $ss = "Dashboard";
+    @endphp
+    @if($ss == 'Dashboard') <li class="nav-item active">  @else <li class="nav-item"> @endif
         <a class="nav-link" href="{{url('dashboard_owner')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -21,14 +24,14 @@
 
 
     <!-- Nav Item - Profile -->
-    <li class="nav-item">
+    @if($ss == 'Profile') <li class="nav-item active">  @else <li class="nav-item"> @endif
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-user"></i>
             <span>Profile</span></a>
     </li>
 
     <!-- Nav Item - Tenets Collapse Menu -->
-    <li class="nav-item">
+    @if($ss == 'Tenet') <li class="nav-item active">  @else <li class="nav-item"> @endif
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-users"></i>
@@ -44,7 +47,7 @@
         </div>
     </li>
     <!-- Nav Item - Balance -->
-    <li class="nav-item">
+    @if($ss == 'Balance') <li class="nav-item active">  @else <li class="nav-item"> @endif
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-wallet"></i>
             <span>Balance</span></a>

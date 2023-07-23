@@ -104,7 +104,7 @@ class LoginController extends Controller
             $name = $userInfo->fname.' '.$userInfo->lname;
             $request->session()->put('LoggedUser', ['name' =>$name, 'username'=>$userInfo->username, 'housename'=>$houseInfo->name]);
             if($userInfo->status == 0){             //User is a tenant
-                return redirect ('dashboard_tenet');
+                return redirect ('tenet/dashboard_tenet');
             }
             elseif($userInfo->status == 1){         //User is an owner
                 return redirect ('dashboard_owner');

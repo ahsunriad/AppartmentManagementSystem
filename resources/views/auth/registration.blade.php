@@ -2,7 +2,7 @@
 @section('title', 'Tenet Registration')
 @section('content')
     <div class="wrap-login100">
-        <div class="login100-pic js-tilt" data-tilt>
+        <div class="login100-pic js-tilt custom-padding-img" data-tilt>
             <img src="{{asset('assets/auth/images/img-01.png')}}" alt="IMG">
         </div>
 
@@ -106,7 +106,7 @@
                 </button>
             </div>
 
-            <div class="text-center p-t-136">
+            <div class="text-center custom-p-t-136">
                 <a class="txt2" href="{{url('login')}}">
                     Login to Your Account
                     <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
