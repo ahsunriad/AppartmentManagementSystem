@@ -95,23 +95,25 @@ class LoginController extends Controller
         ]);
 
         $userCredential = Credential::where(['email'=>$request->email])->first();
-//        dd($userCredential);
+    //    dd($userCredential);
 
         if ($userCredential && Hash::check($request->password,$userCredential->password)){
             $userInfo = User::where(['username'=>$userCredential->username])->first();
             $houseInfo = House::where(['username'=>$userCredential->username])->first();
-            //dd($houseInfo);
+            // dd($houseInfo);
+            // dd($userInfo);
             $name = $userInfo->fname.' '.$userInfo->lname;
             $request->session()->put('LoggedUser', ['name' =>$name, 'username'=>$userInfo->username, 'housename'=>$houseInfo->name]);
-            if($userInfo->status == 0){             //User is a tenant
-                return redirect ('tenet/dashboard_tenet');
+            if($userInfo->status == 0){             //User is a tenent
+                return redirect ('dashboard_tenet');
             }
             elseif($userInfo->status == 1){         //User is an owner
                 return redirect ('dashboard_owner');
             }
         }
         else{
-            redirect('auth.login')->with('failed','Login in failed!');
+            dd('fuck');
+            redirect('register')->with('failed','Login in failed!');
         }
     }
 }

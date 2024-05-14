@@ -1,67 +1,86 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon">
-            <i class="fas fa-house-user"></i>
+ <!-- Left side column. contains the logo and sidebar -->
+ <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="dist/img/img-ad.jpg" class="img-circle" alt="User Image">
         </div>
-        <div class="sidebar-brand-text mx-3">@if(session('LoggedUser')) {{Session::get('LoggedUser')['housename']}} @endif</div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    @php
-    $ss = "Dashboard";
-    @endphp
-    @if($ss == 'Dashboard') <li class="nav-item active">  @else <li class="nav-item"> @endif
-        <a class="nav-link" href="{{url('dashboard_owner')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-
-    <!-- Nav Item - Profile -->
-    @if($ss == 'Profile') <li class="nav-item active">  @else <li class="nav-item"> @endif
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Profile</span></a>
-    </li>
-
-    <!-- Nav Item - Tenets Collapse Menu -->
-    @if($ss == 'Tenet') <li class="nav-item active">  @else <li class="nav-item"> @endif
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-           aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Tenets</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Current Tenets</a>
-                <a class="collapse-item" href="#">Past Tenets</a>
-                <a class="collapse-item" href="#">Approve Tenets</a>
-            </div>
+        <div class="pull-left info">
+          <p><?php //echo $name; ?></p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-    </li>
-    <!-- Nav Item - Balance -->
-    @if($ss == 'Balance') <li class="nav-item active">  @else <li class="nav-item"> @endif
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-wallet"></i>
-            <span>Balance</span></a>
-    </li>
+      </div>
+      <!-- search form -->
+      <form action="search-result.php" method="POST" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="searchdata" id="searchdata" class="form-control" placeholder="Enter Contact or Name....">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="{{Request::is('dashboard')?'active':''}}">
+          <a href="dashboard.php">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+
+        <li class="{{Request::is('apartment')?'active':''}}">
+          <a href="manage-apartment.php">
+            <i class="fa fa-building-o"></i> <span>Manage Apartment</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
 
 
+        <li class="{{Request::is('visitors')?'active':''}}">
+          <a href="visitor-entry.php">
+            <i class="fa fa-plus"></i> <span>Entry Visitors</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green"><?php //include './counters/todays-visitor-count.php'?></small>
+            </span>
+          </a>
+        </li>
 
-</ul>
-<!-- End of Sidebar -->
+        <li class="{{Request::is('checkout_visitors')?'active':''}}">
+          <a href="checkout_visitor.php">
+            <i class="fa fa-sign-out"></i> <span>Check-Out Visitors</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green"><?php //include './counters/checkout-visitor.php'?></small>
+            </span>
+          </a>
+        </li>
+
+
+        <li class="{{Request::is('visitor-management')?'active':''}}">
+          <a href="visitor-mgmt.php">
+            <i class="fa fa-address-card"></i> <span>Visitor Management</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+
+        <li class="{{Request::is('reports')?'active':''}}">
+          <a href="report.php">
+            <i class="fa fa-file-pdf-o"></i> <span>Reports</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>  

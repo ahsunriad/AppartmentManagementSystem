@@ -1,89 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>@yield('title')</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="{{asset('frontend/bootstrap/dist/css/bootstrap.min.css')}}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('frontend/font-awesome/css/font-awesome.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{asset('frontend/Ionicons/css/ionicons.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('frontend/css/AdminLTE.min.css')}}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{{asset('frontend/css/skins/_all-skins.min.css')}}">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>@yield('title')</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{{asset('frontend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="{{asset('frontend/css/owner.css')}}" rel="stylesheet">
-
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
-     @include('layouts.owner.sidebar')           {{--Includes Sidebar --}}
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-            @include('layouts.owner.topbar')    {{--Includes Topbar--}}
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                @yield('pageContent')   
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- End of Main Content -->
-        @include('layouts.owner.footer')         {{--Includes Footer --}}
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <?php //include 'includes/header.php'?>
+    @include('layouts.owner.topbar')
+  
+    <?php //$page='dashboard'; include 'includes/sidebar.php'?>
+    @include('layouts.owner.sidebar')
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    @yield('pageContent')
+  </div>
+  <!-- /.content-wrapper -->
+  
+  <?php //include 'includes/footer.php'?>
+    @include('layouts.owner.footer')
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark" style="display: none;">
+    <!-- Create the tabs -->
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+
+      <div class="tab-pane" id="control-sidebar-home-tab">
+       
+      </div>
+ 
     </div>
-    <!-- End of Content Wrapper -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <div class="control-sidebar-bg"></div>
 </div>
-<!-- End of Page Wrapper -->
+<!-- ./wrapper -->
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{url('logout')}}">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap core JavaScript-->
-<script src="{{asset('frontend/vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="{{asset('frontend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="{{asset('frontend/js/owner.js')}}"></script>
-
-<!-- Page level plugins -->
-<script src="{{asset('frontend/vendor/chart.js/Chart.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('frontend/js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('frontend/js/demo/chart-pie-demo.js')}}"></script>
-
+<!-- jQuery 3 -->
+<script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{asset('jquery-ui/jquery-ui.min.js')}}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- Developed by Naseeb Bajracharya -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- Morris.js charts -->
+<script src="{{asset('raphael/raphael.min.js')}}"></script>
+<script src="{{asset('morris.js/morris.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{asset('jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
+<!-- jvectormap -->
+<script src="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{asset('jquery-knob/dist/jquery.knob.min.js')}}"></script>
+<!-- daterangepicker -->
+<script src="{{asset('moment/min/moment.min.js')}}"></script>
+<script src="{{asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<!-- datepicker -->
+<script src="{{asset('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<!-- Slimscroll -->
+<script src="{{asset('jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('fastclick/lib/fastclick.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('js/adminlte.min.js')}}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{asset('js/pages/dashboard.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('js/demo.js')}}"></script>
 </body>
-
 </html>

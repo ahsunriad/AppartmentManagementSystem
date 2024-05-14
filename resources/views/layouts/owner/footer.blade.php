@@ -1,12 +1,6 @@
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Apartment Management System 2022-
-                <script>
-                document.write(new Date().getFullYear())
-            </script></span>
-        </div>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.0.1
     </div>
-</footer>
-<!-- End of Footer -->
+    Copyright &copy; <?php echo date("Y");?> - Developed By <strong> Ahsun Mahmud Riad </strong>
+  </footer>
