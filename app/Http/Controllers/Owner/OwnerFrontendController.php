@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\House;
 
 class OwnerFrontendController extends Controller
 {
@@ -98,15 +99,16 @@ class OwnerFrontendController extends Controller
     public function profileView($username)
     {
         // Retrieve the user by username
-        $user = User::where('username', $username)->first();
+        $userData = User::where('username', $username)->first();
+        //$houseInfo = House::where('username', $username)->first();
 
         // Check if user exists
-        if (!$user) {
+        if (!$userData) {
             abort(404); // Or handle the case when user doesn't exist
             // dd('shit'); // Or handle the case when user doesn't exist
         }
 
         // Pass the user data to the view
-        return view('owner.profile', compact('user'));
+        return view('owner.profile', compact('userData'));
     }
 }
