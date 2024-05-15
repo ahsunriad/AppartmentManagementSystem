@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class OwnerFrontendController extends Controller
 {
@@ -44,10 +45,21 @@ class OwnerFrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     // Retrieve the user by username
+    //     $user = User::where('id', $id)->first();
+    //     dd($user);
+
+    //     // Check if user exists
+    //     if (!$user) {
+    //         abort(404); // Or handle the case when user doesn't exist
+    //         // dd('shit'); // Or handle the case when user doesn't exist
+    //     }
+
+    //     // Pass the user data to the view
+    //     return view('owner.profile', compact('user'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -81,5 +93,20 @@ class OwnerFrontendController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profileView($username)
+    {
+        // Retrieve the user by username
+        $user = User::where('username', $username)->first();
+
+        // Check if user exists
+        if (!$user) {
+            abort(404); // Or handle the case when user doesn't exist
+            // dd('shit'); // Or handle the case when user doesn't exist
+        }
+
+        // Pass the user data to the view
+        return view('owner.profile', compact('user'));
     }
 }

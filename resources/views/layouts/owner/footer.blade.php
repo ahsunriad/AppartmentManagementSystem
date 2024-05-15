@@ -1,6 +1,8 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0.1
     </div>
-    Copyright &copy; <?php echo date("Y");?> - Developed By <strong> Ahsun Mahmud Riad </strong>
+    Copyright &copy; <strong>Ahsun Mahmud Riad</strong> 2023 -
+            <script>
+                document.write(new Date().getFullYear())
+            </script>
   </footer>

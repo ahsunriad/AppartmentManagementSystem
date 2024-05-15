@@ -26,6 +26,9 @@ Route::post('login', [LoginController::class, 'authenticate'])  ;
 Route::get('register', [RegistrationController::class, 'index']) ;
 Route::post('register', [RegistrationController::class, 'store']) ;
 Route::get('/dashboard_owner',[OwnerFrontendController::class, 'index']);
+// Route::get('/profile/{id}',[OwnerFrontendController::class, 'show']);
+Route::get('/profile/{username}', [OwnerFrontendController::class, 'profileView']);
+
 Route::get('/dashboard_tenet',[TenetFrontendController::class, 'index']);
 
 Route::get('/logout', function(){

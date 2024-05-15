@@ -103,7 +103,7 @@ class LoginController extends Controller
             // dd($houseInfo);
             // dd($userInfo);
             $name = $userInfo->fname.' '.$userInfo->lname;
-            $request->session()->put('LoggedUser', ['name' =>$name, 'username'=>$userInfo->username, 'housename'=>$houseInfo->name]);
+            $request->session()->put('LoggedUser', ['id' => $userInfo->id, 'name' =>$name, 'username'=>$userInfo->username, 'housename'=>$houseInfo->name]);
             if($userInfo->status == 0){             //User is a tenent
                 return redirect ('dashboard_tenet');
             }

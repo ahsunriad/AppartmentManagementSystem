@@ -5,10 +5,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/img-ad.jpg" class="img-circle" alt="User Image">
+          <img src="{{asset('frontend/img/img-ad.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php //echo $name; ?></p>
+          <p>{{session('LoggedUser.name')}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -27,8 +27,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="{{Request::is('dashboard')?'active':''}}">
-          <a href="dashboard.php">
+        <li class="{{Request::is('dashboard_owner')?'active':''}}">
+          <a href="{{url('dashboard_owner')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -36,9 +36,9 @@
         </li>
 
 
-        <li class="{{Request::is('apartment')?'active':''}}">
-          <a href="manage-apartment.php">
-            <i class="fa fa-building-o"></i> <span>Manage Apartment</span>
+        <li class="{{Request::is('tentes')?'active':''}}">
+          <a href="{{url('tenets')}}">
+            <i class="fa fa-users"></i> <span>Tenets</span>
             <span class="pull-right-container">
             </span>
           </a>

@@ -1,10 +1,10 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href=" " class="logo">
+    <a href="{{url('dashboard_owner')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>VM</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Apartment</b> Visitor Management System</span>
+      <span class="logo-lg"><b>{{session('LoggedUser.housename')}}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -28,16 +28,16 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/img-ad.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php //echo $name; ?></span>
+              <img src="{{asset('frontend/img/img-ad.jpg')}}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{session('LoggedUser.name')}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/img-ad.jpg" class="img-circle" alt="User Image">
+                <img src="{{asset('frontend/img/img-ad.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                <?php //echo $name; ?> - Web Developer
+                  {{session('LoggedUser.name')}}
                   <small>Member since March 2021</small>
                 </p>
 
@@ -48,7 +48,7 @@
               <li class="user-footer">
 
                 <div class="pull-left">
-                  <a href="{{url('Profile')}}" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{url('profile/'.session('LoggedUser.username'))}}" class="btn btn-default btn-flat">Profile</a>
                   <a href="{{url('change-password')}}" class="btn btn-default btn-flat">Change Password</a>
                 </div>
 
