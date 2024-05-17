@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('floors', function (Blueprint $table) {
-            $table->floorId();
+            $table->id();
             $table->string('name');
             $table->string('username');
 

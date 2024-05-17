@@ -50,6 +50,7 @@ class RegistrationController extends Controller
             'email'=> 'required',
             'password'=>'required',
             'confirm_password' => 'required'
+
         ]);
         $user = new User();
 
@@ -67,6 +68,14 @@ class RegistrationController extends Controller
         $userCredential->username = $user->username;
         $userCredential->email = $request->input('email');
         $userCredential->password = Hash::make($request->input('password'));
+        if ($request->has('image')){
+            $file = $request->image;
+            //dd($file);
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = $user->username.'.'.$fileExtension;
+            $file->move('assets/uploads/users/',$fileName);
+            $user->image=$fileName;
+        }
 
         $name = $user->fname ." ". $user->lname;
         session()->flash('success', $data = $name);
@@ -74,7 +83,7 @@ class RegistrationController extends Controller
         $user->save();
         $userCredential->save();
 
-        return view('auth.registration');
+        return view('auth.login');
     }
 
     /**

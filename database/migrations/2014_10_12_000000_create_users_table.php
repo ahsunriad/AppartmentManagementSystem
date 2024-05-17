@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('status')->default('0');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('fname');
             $table->string('lname');
             $table->date('dob');
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('phone');
             $table->tinyInteger('gender');
             $table->string('permanent_address');
+            $table->string('image');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -80,9 +80,21 @@ class OwnerFrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
-        //
+        // return $request;  //Check the incoming data
+        $request -> validate([
+            'fname', 'lname', 'phone', 'permanent_address'
+        ]);
+        $userData = User::where('username', $username)->first();
+        // dd($userData);
+        $userData->fname = $request->input('fname');
+        $userData->lname = $request->input('lname');
+        $userData->phone = $request->input('phone');
+        $userData->permanent_address = $request->input('permanent_address');
+        session()->flash('updated', $userData->fname.' '.$userData->lname);
+        $userData->update();
+        return view('owner.profile', compact('userData'));
     }
 
     /**

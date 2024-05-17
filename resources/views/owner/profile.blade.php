@@ -3,10 +3,7 @@
 @section('pageContent')
     <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-            Profile
-            <!-- <small>Control panel</small> -->
-            </h1>
+            <h1>Profile</h1>
             <ol class="breadcrumb">
             <li><a href="{{url('dashboard_owner')}}"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{{url('profile/'.session('LoggedUser.username'))}}"><i class="fa fa-user"></i> Profile</a></li>
@@ -18,8 +15,8 @@
         @if(session('updated'))
             <div class='alert alert-success alert-dismissible'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4><i class='icon fa fa-info-circle'></i> Alert!</h4>
-                    The Profile {{session('updated')}} has been added successfully.
+                <h4><i class='icon fa fa-check-circle'></i> Success!</h4>
+                    The Profile of {{session('updated')}} has been updated successfully.
             </div>
         @endif
   
@@ -41,7 +38,16 @@
                     <form action="{{url('updateProfile/'.$userData->username)}}" method="post" enctype="multipart/form-data">
                         {{method_field('put')}}
                         @csrf
-
+                        @if($userData->image)
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    {{-- <label>Role As</label> --}}
+                                    {{-- <input type="text" class="form-control" value="{{$userData->status ? 'Owner' : ''}}" readonly> If 1 then Owner, if 0 then Tenet --}}
+                                    <img src="{{asset('assets/uploads/users/'.$userData->image)}}"  class="w-25 rounded mx-auto d-block">
+                                    
+                                </div>
+                            </div>
+                        @endif    
                         {{-- Role As can't be changed--}}
                         <div class="col-md-6">
                             <div class="form-group">
@@ -62,13 +68,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>First Name</label>
-                                <input type="text" class="form-control" value="{{$userData->fname}}">
+                                <input type="text" class="form-control" name="fname" value="{{$userData->fname}}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control" value="{{$userData->lname}}">
+                                <input type="text" class="form-control" name="lname" value="{{$userData->lname}}">
                             </div>
                         </div>
 
@@ -100,7 +106,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Contact No</label>
-                                <input type="text" class="form-control" value="{{$userData->phone}}">
+                                <input type="text" class="form-control" name="phone" value="{{$userData->phone}}">
                             </div>
                         </div>
 
@@ -108,7 +114,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Permanent Address</label>
-                                <input type="text" class="form-control" value="{{$userData->permanent_address}}">
+                                <input type="text" class="form-control" name="permanent_address" value="{{$userData->permanent_address}}">
                             </div>
                         </div>
 
@@ -125,7 +131,7 @@
                             </div> <!-- /.box-body -->
                             
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-block btn-primary btn-lg" name="update">Make Changes</button>
+                                <button type="submit" class="btn btn-block btn-primary btn-lg" name="submit">Make Changes</button>
                             </div>
         </div>
                     </form> <!-- /Form -->

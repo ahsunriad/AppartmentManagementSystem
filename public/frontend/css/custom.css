@@ -11,3 +11,11 @@
 .custom-padding-img{
     padding-top: 180px;
 }
+.custom-padding-img-upload{
+    padding-top: 11px;
+}
+.custom-profile-img{
+    width: 100%;
+    max-width: 219px;
+    height: auto;
+}

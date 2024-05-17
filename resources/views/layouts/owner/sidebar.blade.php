@@ -8,7 +8,7 @@
           <img src="{{asset('frontend/img/img-ad.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{session('LoggedUser.name')}}</p>
+          <p><a href="{{url('profile/'.session('LoggedUser.username'))}}">{{session('LoggedUser.name')}}</a></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

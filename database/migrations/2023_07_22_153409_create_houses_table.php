@@ -17,11 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username');
-            $table->string('address');
+            $table->string('city');
+            $table->string('area');
+            $table->string('block');
+            $table->string('road');
+            $table->string('plot');
             $table->integer('no_of_floors');
             $table->integer('unit_per_floor');
             $table->integer('total_units');
             $table->integer('floorId');
+            $table->integer('unitId');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -100,6 +100,16 @@
 						</span>
             </div>
 
+            {{--Confrirm Password Input--}}
+            <div class="wrap-input100 validate-input" data-validate="Image is required">
+                <input class="input100 custom-padding-img-upload" type="file" name="image" accept="image/*">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+							<i class="fa fa-picture-o" aria-hidden="true"></i>
+						</span>
+            </div>
+
+
             <div class="container-login100-form-btn">
                 <button class="login100-form-btn">
                     Register
