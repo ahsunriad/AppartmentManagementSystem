@@ -123,4 +123,9 @@ class OwnerFrontendController extends Controller
         // Pass the user data to the view
         return view('owner.profile', compact('userData'));
     }
+    function tenets() {
+        $status=0;
+        $userData = User::where('status', $status)->first();
+        return view('owner.tenets', compact('userData'));
+    }
 }

@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+// use App\Http\Controllers\Auth\Image;
+use Intervention\Image\Facades\Image;
 
 class RegistrationController extends Controller
 {
@@ -73,7 +75,10 @@ class RegistrationController extends Controller
             //dd($file);
             $fileExtension = $file->getClientOriginalExtension();
             $fileName = $user->username.'.'.$fileExtension;
-            $file->move('assets/uploads/users/',$fileName);
+            // $file->move('assets/uploads/users/',$fileName);
+            $path = public_path('assets/uploads/users/' . $fileName);
+            Image::make($file)->resize(300, 300)->save($path);
+            
             $user->image=$fileName;
         }
 

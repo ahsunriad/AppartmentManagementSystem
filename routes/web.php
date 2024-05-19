@@ -28,6 +28,7 @@ Route::post('register', [RegistrationController::class, 'store']) ;
 Route::get('/dashboard_owner',[OwnerFrontendController::class, 'index']);
 Route::get('/profile/{username}', [OwnerFrontendController::class, 'profileView']);
 Route::put('/updateProfile/{username}',[OwnerFrontendController::class, 'update']);
+Route::get('/tenets',[OwnerFrontendController::class, 'tenets']);
 
 Route::get('/dashboard_tenet',[TenetFrontendController::class, 'index']);
 
